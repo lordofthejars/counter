@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://jboss.org/schema/arquillian"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian
+    http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <extension qualifier="webdriver">
+        <property name="browser">safari</property>
+    </extension>
+    <extension qualifier="screenshooter">
+        <property name="takeBeforeTest">true</property>
+        <property name="takeAfterTest">true</property>
+        <property name="takeOnEveryAction">true</property>
+    </extension>
+    <extension qualifier="reporter">
+        <property name="report">html5</property>
+        <property name="maxImageWidth">5000</property>
+    </extension>
+
+    <extension qualifier="docker">
+        <property name="definitionFormat">COMPOSE</property>
+        <property name="machineName">dev</property>
+        <property name="dockerContainersFile">docker-compose.yml</property>
+    </extension>
+
+    <container qualifier="containerless" default="true">
+        <configuration>
+            <property name="containerlessDocker">web</property>
+            <property name="embeddedPort">8080</property>
+        </configuration>
+    </container>
+</arquillian>
